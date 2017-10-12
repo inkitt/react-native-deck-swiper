@@ -15,12 +15,12 @@ const LABEL_TYPES = {
 class Swiper extends React.Component {
   componentWillReceiveProps (newProps) {
     this.setState({
-      firstCardIndex: newProps.cardIndex || 0,
+      //firstCardIndex: newProps.cardIndex || 0,
       cards: newProps.cards,
       previousCardX: new Animated.Value(newProps.previousCardInitialPositionX),
       previousCardY: new Animated.Value(newProps.previousCardInitialPositionY),
       swipedAllCards: false,
-      secondCardIndex: newProps.cards.length === 1 ? 0 : 1,
+      //secondCardIndex: newProps.cards.length === 1 ? 0 : 1,
       previousCardIndex:
       newProps.cards.length === 1 ? 0 : newProps.cards.length - 1,
       panResponderLocked: newProps.cards && newProps.cards.length === 0,
@@ -322,6 +322,7 @@ class Swiper extends React.Component {
       0,
       mustDecrementCardIndex
     )
+
   }
 
   swipeRight = (mustDecrementCardIndex = false) => {
@@ -398,6 +399,8 @@ class Swiper extends React.Component {
     let newCardIndex = firstCardIndex + 1
     let swipedAllCards = false
 
+    console.log ('newCardIndex', newCardIndex)
+    console.log ('this.state.cards.length', this.state.cards.length)
     if (newCardIndex === this.state.cards.length) {
       newCardIndex = 0
       swipedAllCards = true
@@ -473,7 +476,7 @@ class Swiper extends React.Component {
     const opacity = this.props.animateOverlayLabelsOpacity
       ? this.interpolateOverlayLabelsOpacity()
       : 1
-    return [this.props.overlayLabelWrapperStyle, dynamicStyles, { opacity }]
+    return [this.props.overlayLabelWrapperStyle, dynamicStyles]
   }
 
   calculateSwipableCardStyle = () => {
@@ -503,7 +506,7 @@ class Swiper extends React.Component {
     this.cardStyle,
     {
       zIndex: 1,
-      transform: [{ scale: this.state.scale }]
+      //transform: [{ scale: this.state.scale }]
     },
     this.customCardStyle
   ]
@@ -579,10 +582,10 @@ class Swiper extends React.Component {
           }
         ]}
       >
-        {this.renderChildren()}
+        {/*this.renderChildren()*/}
         {this.renderFirstCard()}
         {this.props.showSecondCard ? this.renderSecondCard() : null}
-        {this.props.swipeBackCard ? this.renderSwipeBackCard() : null}
+        {/*this.props.swipeBackCard ? this.renderSwipeBackCard() : null*/}
       </View>
     )
   }
@@ -605,7 +608,7 @@ class Swiper extends React.Component {
   renderFirstCard = () => {
     const { firstCardIndex } = this.state
     const { cards } = this.props
-
+    console.log('firstCardIndex', firstCardIndex )
     const swipableCardStyle = this.calculateSwipableCardStyle()
     const firstCardContent = cards[firstCardIndex]
     const firstCard = this.props.renderCard(firstCardContent)
@@ -631,8 +634,8 @@ class Swiper extends React.Component {
   renderSecondCard = () => {
     const { secondCardIndex } = this.state
     const { cards, renderCard } = this.props
-
-    const secondCardZoomStyle = this.calculateSecondCardZoomStyle()
+    console.log('secondCardIndex', secondCardIndex )
+    const secondCardZoomStyle =  this.calculateSecondCardZoomStyle()
     const secondCardContent = cards[secondCardIndex]
     const secondCard = renderCard(secondCardContent)
 
