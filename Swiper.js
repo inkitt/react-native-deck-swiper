@@ -399,8 +399,8 @@ class Swiper extends React.Component {
     let newCardIndex = firstCardIndex + 1
     let swipedAllCards = false
 
-    console.log ('newCardIndex', newCardIndex)
-    console.log ('this.state.cards.length', this.state.cards.length)
+    //console.log ('newCardIndex', newCardIndex)
+    //console.log ('this.state.cards.length', this.state.cards.length)
     if (newCardIndex === this.state.cards.length) {
       newCardIndex = 0
       swipedAllCards = true
@@ -608,7 +608,7 @@ class Swiper extends React.Component {
   renderFirstCard = () => {
     const { firstCardIndex } = this.state
     const { cards } = this.props
-    console.log('firstCardIndex', firstCardIndex )
+    //console.log('firstCardIndex', firstCardIndex )
     const swipableCardStyle = this.calculateSwipableCardStyle()
     const firstCardContent = cards[firstCardIndex]
     const firstCard = this.props.renderCard(firstCardContent)
@@ -634,7 +634,7 @@ class Swiper extends React.Component {
   renderSecondCard = () => {
     const { secondCardIndex } = this.state
     const { cards, renderCard } = this.props
-    console.log('secondCardIndex', secondCardIndex )
+    //console.log('secondCardIndex', secondCardIndex )
     const secondCardZoomStyle =  this.calculateSecondCardZoomStyle()
     const secondCardContent = cards[secondCardIndex]
     const secondCard = renderCard(secondCardContent)
